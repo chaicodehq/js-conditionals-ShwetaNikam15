@@ -27,4 +27,11 @@
  */
 export function calculateTax(income) {
   // Your code here
+  if(income <= 0) return 0;
+  else if(income > 0 && income <= 10000 ) return 0;
+  else if(income >= 10001 && income <= 30000) return ((income - 10000)*0.1);
+  else if(income >= 30001 && income <= 70000) return (2000+((income - 30000)*0.2));
+  else if(income > 70000) return (2000+8000+((income - 70000)*0.3));
+  // taxed each slice of the more than 70k, so the first 10k is taxfree 0%, 
+  // 20k of that amt is taxed at 10% and 40k @ 20% and remaining @30%
 }

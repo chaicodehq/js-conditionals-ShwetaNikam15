@@ -30,4 +30,23 @@
  */
 export function calculateShipping(weight, country, orderTotal) {
   // Your code here
+
+  //checking weight and given orderTotal for -1
+  if(weight <= 0 || orderTotal < 0) return -1;
+  else if (country == "US")
+          {
+          // domestic charges
+                if(orderTotal > 50) return 0;
+                else if(weight > 0 && weight <= 1) return 5;
+                else if(weight > 1 && weight <= 5) return 10;
+                else if(weight > 5) return 15;
+          }
+  else {
+      //international
+        if(orderTotal > 100) return 0;
+                else if(weight > 0 && weight <= 1) return 15;
+                else if(weight > 1 && weight <= 5) return 25;
+                else if(weight > 5) return 40;        
+       }
+
 }

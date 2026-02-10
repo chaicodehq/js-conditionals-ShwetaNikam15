@@ -34,4 +34,29 @@
  */
 export function canBorrowBook(memberAge, hasValidCard, overdueBooks) {
   // Your code here
+
+
+//    * Return an object with two properties:
+//  *   - allowed: boolean (true if they can borrow, false otherwise)
+//  *   - message: string (a descriptive message)
+//  *
+//  * Check conditions in this order and return the FIRST failure:
+//  *   - Age < 6:
+var objYoung = { allowed: false, message: "Too young - must be at least 6 years old" }
+//  *
+//  *   - No valid card:
+var objInvalid = { allowed: false, message: "Invalid library card - please renew at the front desk" }
+//  *
+//  *   - Has overdue books:
+var objOverdue = { allowed: false, message: `Please return your ${overdueBooks} overdue book(s) first`}
+//  *     (replace X with the actual number of overdue books)
+//  *
+//  *   - All conditions met:
+ var objYes=  { allowed: true, message: "You may borrow up to 3 books" }
+
+if(memberAge < 6) return objYoung;
+else if(!(hasValidCard)) return objInvalid;
+else if(overdueBooks > 0) return objOverdue;
+else return objYes;
 }
+

@@ -34,4 +34,39 @@
  */
 export function calculateParkingFee(hours, vehicleType) {
   // Your code here
+  let fee = 0;//initializing int for fee variable
+  if(hours <= 0 || (vehicleType != "car" && vehicleType !="motorcycle" && vehicleType !="bus") ) return -1;
+  else
+    {
+      //to check for integer use this: Number.isInteger(hours), to check if the number is not an integer
+      // using Math.trunc(x) separting the decimal part and integer part, Math.trunc(1.1) => 1 then +1 to round for charges
+    if(!Number.isInteger(hours)) {let roundhr = Math.trunc(hours); hours = roundhr + 1;}// converting 1.1 -> 2 
+    switch(vehicleType)
+        { case "car":
+                if(hours == 1) return 5;
+                else { hours -= 1;
+                      fee = 5;
+                      fee = fee + (hours*3);
+                      if (fee > 30) return 30;
+                      else return fee;
+                      } 
+          case "motorcycle":
+                if(hours == 1) return 3;
+                else { hours -= 1;
+                      fee = 3;
+                      fee = fee + (hours*2);
+                      if (fee > 18) return 18;
+                      else return fee;
+                      } 
+          case "bus":
+                if(hours == 1) return 10;
+                else { hours -= 1;
+                      fee = 10;
+                      fee = fee + (hours*7);
+                      if (fee > 60) return 60;
+                      else return fee;
+                      } 
+        }
+    }
+
 }

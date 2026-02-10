@@ -31,4 +31,54 @@
  */
 export function calculateTip(billAmount, serviceRating) {
   // Your code here
+  //FIND OUT HOW TO KEEP THINGS INTEGER IN JS
+//   Recommended, clear initializations for numeric calculations, to set it as a Number:
+// let tipPercentage = 0;
+// Or, for a grouped object: let result = { tipPercentage: 0, tipAmount: 0, totalAmount: 0 };
+  let tipPercentage = 0;
+  let tipAmount = 0;
+  let totalAmount = 0;
+  let obj = {tipPercentage: 0, tipAmount: 0, totalAmount: 0 };
+
+          //fn for calculating tip amount
+  function calculateTipAmt(tipPercentage, billAmount){
+            let percent = tipPercentage * 0.01;
+            let tpA = percent * billAmount;
+            tipAmount = Number(tpA.toFixed(2));//rounded to 2 decimals
+            totalAmount =  tipAmount + billAmount;
+            return {tipPercentage, tipAmount, totalAmount};
+          }
+
+  if(billAmount <=0 || !(serviceRating >=1 && serviceRating <= 5) || !Number.isInteger(serviceRating)) return null;
+  else{
+    //to check for integer use this: Number.isInteger(serviceRating)
+        //getting tipPercentage
+        switch(serviceRating){
+          case 1:
+            tipPercentage = 5;
+            obj = calculateTipAmt(tipPercentage, billAmount);
+            return obj;
+          case 2:
+            tipPercentage = 10;
+            return calculateTipAmt(tipPercentage, billAmount);
+            return obj;
+          case 3:
+            tipPercentage = 15;
+            obj = calculateTipAmt(tipPercentage, billAmount);
+            return obj;
+          case 4:
+            tipPercentage = 20;
+            obj = calculateTipAmt(tipPercentage, billAmount);
+            return obj;
+          case 5:
+            tipPercentage = 25;
+            obj = calculateTipAmt(tipPercentage, billAmount);
+            return obj;
+            }
+
+
+
+  }
+
+
 }
